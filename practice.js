@@ -48,6 +48,10 @@ function initPractice() {
       <button id="start-btn">🚀 Start Practice</button>
       <button id="example-btn">💡 Show Example</button>
     </div>
+    <div style="display:flex; justify-content:center; gap:0.5rem; margin-top:0.5rem;">
+      <label for="player-name" style="font-weight:bold;">Your name:</label>
+      <input id="player-name" type="text" placeholder="Enter name (optional)" style="width:200px;">
+    </div>
     <div style="margin:1rem 0; display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;">
       <p>⏰ Timer: <span id="timer" style="font-weight:bold;">0</span>s</p>
       <p>🏆 Score: <span id="score" style="font-weight:bold;">0</span></p>
