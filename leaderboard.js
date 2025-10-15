@@ -44,7 +44,16 @@ function fetchLeaderboardJSONP(timeoutMs = 5000) {
 
 function sanitizeName(name) {
   if (!name) return 'Anonymous';
-  const s = String(name).trim();
+  // Normalize string and remove zero-width/invisible characters that may corrupt display
+  let s = String(name);
+  try {
+    s = s.normalize('NFKC');
+  } catch (e) {
+    // normalize may not be supported in some environments; ignore
+  }
+  // Remove common zero-width/invisible chars (ZWSP, ZWNJ, ZWJ, BOM)
+  s = s.replace(/[\u200B\u200C\u200D\uFEFF]/g, '');
+  s = s.trim();
   if (s.length === 0) return 'Anonymous';
   return s.length > 30 ? s.slice(0, 30) + '…' : s;
 }
